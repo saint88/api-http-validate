@@ -26,5 +26,3 @@ jobs:
           name: report
           if-no-files-found: error
           path: jest_html_reporters.html
-
-      - uses: ArtiomTr/jest-coverage-report-action@v2
