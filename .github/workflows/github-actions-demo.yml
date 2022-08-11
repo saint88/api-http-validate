@@ -18,5 +18,11 @@ jobs:
     - name: Use the Upload Artifact GitHub Action
       uses: actions/upload-artifact@v2
       with: 
-        name: assets-for-download
-        path: /home/runner/work/api-http-validate/api-http-validate/jest_html_reporters.html
+        name: report
+        path: jest_html_reporters.html
+
+    - name: HTML Preview
+      id: html_preview
+      uses: pavi2410/html-preview-action@v2
+      with:
+        html_file: 'jest_html_reporters.html'
