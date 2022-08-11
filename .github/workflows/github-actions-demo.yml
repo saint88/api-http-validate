@@ -3,26 +3,37 @@ name: Tests
 on: [push]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        ci_index: [0, 1, 2, 3]
+        ci_total: [4]
+
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          cache: npm
 
-    - name: Install modules
-      run: yarn
-    
-    - name: Run tests
-      continue-on-error: true
-      run: yarn test
+      - name: Install modules
+        run: npm ci
 
-    - name: Use the Upload Artifact GitHub Action
-      uses: actions/upload-artifact@v2
-      with: 
-        name: report
-        path: jest_html_reporters.html
+      - name: Run tests
+        continue-on-error: true
+        run: npm run test
 
-    - name: HTML Preview
-      id: html_preview
-      uses: pavi2410/html-preview-action@v2
-      with:
-        html_file: 'jest_html_reporters.html'
+      - name: Use the Upload Artifact GitHub Action
+        uses: actions/upload-artifact@v2
+        with: 
+          name: report
+          path: jest_html_reporters.html
+
+      - name: HTML Preview
+        id: html_preview
+        uses: pavi2410/html-preview-action@v2
+        with:
+          html_file: 'jest_html_reporters.html'
