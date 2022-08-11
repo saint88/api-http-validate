@@ -12,6 +12,7 @@ jobs:
       run: yarn
     
     - name: Run tests
+      continue-on-error: true
       run: yarn test
 
     - name: Use the Upload Artifact GitHub Action
