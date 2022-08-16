@@ -39,4 +39,4 @@ jobs:
           path: coverage
 
       - name: Send report via telegram bot
-        run: echo ${{secrets.CHAT_ID}}
+        run: "curl -X POST https://api.telegram.org/bot${{secrets.BOT_TOKEN}}/sendMessage -H \"Content-Type: application/json\" -d '{\"chat_id\": \"${{secrets.CHAT_ID}}\", \"text\": \"Hello\"}'"
