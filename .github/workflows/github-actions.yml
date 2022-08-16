@@ -59,7 +59,7 @@ jobs:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: jest_html_reporters.html
+          folder: coverage/lcov-report
           clean: true
           token: ${{ secrets.TOKEN }}
 
