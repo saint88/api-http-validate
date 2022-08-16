@@ -50,11 +50,18 @@ jobs:
           if-no-files-found: error
           path: coverage
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+      # - name: Deploy
+      #   uses: peaceiris/actions-gh-pages@v3
+      #   with:
+      #     github_token: ${{ secrets.TOKEN }}
+      #     publish_dir: ./coverage
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          github_token: ${{ secrets.TOKEN }}
-          publish_dir: ./coverage
+          folder: coverage
+          clean: true
+          token: ${{ secrets.TOKEN }}
 
       - name: Send report via telegram bot
         run: "curl -X POST https://api.telegram.org/bot${{secrets.BOT_TOKEN}}/sendMessage -H \"Content-Type: application/json\" -d '{\"chat_id\": \"${{secrets.CHAT_ID}}\", \"text\": \"Report link is: ${{env.GITHUB_ACTION_PATH}}/${{env.GITHUB_ACTION}}\"}'"
