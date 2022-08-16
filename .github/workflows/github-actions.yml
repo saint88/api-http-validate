@@ -57,4 +57,4 @@ jobs:
           artifact_name: coverage
 
       - name: Send report via telegram bot
-        run: "curl -X POST https://api.telegram.org/bot${{secrets.BOT_TOKEN}}/sendMessage -H \"Content-Type: application/json\" -d '{\"chat_id\": \"${{secrets.CHAT_ID}}\", \"text\": \"Hello\"}'"
+        run: "curl -X POST https://api.telegram.org/bot${{secrets.BOT_TOKEN}}/sendMessage -H \"Content-Type: application/json\" -d '{\"chat_id\": \"${{secrets.CHAT_ID}}\", \"text\": \"Report link is: ${{env.GITHUB_ACTION_PATH}}/${{env.GITHUB_ACTION}}\"}'"
