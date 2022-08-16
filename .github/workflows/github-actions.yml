@@ -2,6 +2,9 @@ name: Tests
 
 on: [push]
 
+env:
+  CHAT_ID: $CHAT_ID
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -39,4 +42,4 @@ jobs:
           path: coverage
 
       - name: Send report via telegram bot
-        run: echo ${{env.CHAT_ID}}
+        run: echo $CHAT_ID
