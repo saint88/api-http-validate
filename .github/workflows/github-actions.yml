@@ -41,7 +41,7 @@ jobs:
         with: 
           name: report
           if-no-files-found: error
-          path: ./**
+          path: ./coverage
 
       - name: Publication coverage report
         uses: actions/upload-artifact@v3
