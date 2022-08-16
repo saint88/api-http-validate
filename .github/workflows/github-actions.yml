@@ -42,4 +42,4 @@ jobs:
           path: coverage
 
       - name: Send report via telegram bot
-        run: echo $CHAT_ID
+        run: echo ${{secrets.CHAT_ID}}
