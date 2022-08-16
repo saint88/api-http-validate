@@ -2,3 +2,4 @@ node_modules
 coverage
 results
 jest[-_]html[-_]reporter*
+html-report

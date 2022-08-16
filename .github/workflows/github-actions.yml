@@ -56,10 +56,10 @@ jobs:
       #     github_token: ${{ secrets.TOKEN }}
       #     publish_dir: ./coverage
 
-      - name: Deploy 🚀
+      - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: coverage/lcov-report
+          folder: html-report
           clean: true
           token: ${{ secrets.TOKEN }}
 
