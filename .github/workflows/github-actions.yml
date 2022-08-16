@@ -9,6 +9,10 @@ permissions:
 
 jobs:
   test:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     runs-on: ubuntu-latest
 
     steps:
@@ -49,6 +53,8 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
+        with:
+          artifact_name: report
 
       - name: Send report via telegram bot
         run: "curl -X POST https://api.telegram.org/bot${{secrets.BOT_TOKEN}}/sendMessage -H \"Content-Type: application/json\" -d '{\"chat_id\": \"${{secrets.CHAT_ID}}\", \"text\": \"Hello\"}'"
